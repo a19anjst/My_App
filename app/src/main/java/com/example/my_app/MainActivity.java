@@ -4,9 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
+        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a19anjst");
 
     }
     @SuppressLint("StaticFieldLeak")
@@ -48,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         private HttpURLConnection connection = null;
         private BufferedReader reader = null;
 
-        private ArrayList<String> MountainNames=new ArrayList<String>();
-        private ArrayList<String> MountainLocs=new ArrayList<String>();
-        private ArrayList<Integer> MountainHeights=new ArrayList<Integer>();
+        private ArrayList<String> GodNames=new ArrayList<String>();
+        private ArrayList<String> GodLocs=new ArrayList<String>();
+        private ArrayList<String> GodPower=new ArrayList<String>();
 
 
 
         protected String doInBackground(String... params) {
             try {
-                URL url = new URL("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
+                URL url = new URL("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a19anjst");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
 
@@ -97,19 +94,19 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String name = jsonObject.getString("name");
                     String location = jsonObject.getString("location");
-                    int height = jsonObject.getInt("size");
+                    String company = jsonObject.getString("company");
 
-                    MountainNames.add(name);
-                    MountainLocs.add(location);
-                    MountainHeights.add(height);
+                    GodNames.add(name);
+                    GodLocs.add(location);
+                    GodPower.add(company);
                 }
-                ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this, R.layout.list_textview, R.id.list_TEXTVIEW, MountainNames);
+                ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this, R.layout.list_textview, R.id.list_TEXTVIEW, GodNames);
                 ListView my_listview=(ListView) findViewById(R.id.list_LISTVIEW);
                 my_listview.setAdapter(adapter);
                 my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                        Toast.makeText(getApplicationContext(), MountainNames.get(i) + " lies in " + MountainLocs.get(i) + " which is " + MountainHeights.get(i) + " metres high", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), GodNames.get(i) + " lives in " + GodLocs.get(i) + " and has the power of " + GodPower.get(i), Toast.LENGTH_LONG).show();
                     }
                 });
             }
