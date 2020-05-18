@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                        Toast.makeText(getApplicationContext(), GodNames.get(i) + " lives in " + GodLocs.get(i) + " and has the power of " + GodPower.get(i), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                         startActivity(intent);
                     }
