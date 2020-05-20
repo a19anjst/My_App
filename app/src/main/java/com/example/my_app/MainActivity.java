@@ -107,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-
+                        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        intent.putExtra("power", GodPower.get(i));
+                        intent.putExtra("location", GodLocs.get(i));
+                        startActivity(intent);
                     }
                 });
             }

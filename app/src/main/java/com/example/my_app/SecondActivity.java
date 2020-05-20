@@ -17,8 +17,8 @@ public class SecondActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-            String hej = extras.getString("hej");
-            textView.setText(hej);
+            String location = extras.getString("location");
+            textView.setText(location);
         }
         Button close = findViewById(R.id.go_back);
         close.setOnClickListener(new View.OnClickListener() {
