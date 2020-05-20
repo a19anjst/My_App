@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         private ArrayList<String> GodNames=new ArrayList<String>();
         private ArrayList<String> GodLocs=new ArrayList<String>();
         private ArrayList<String> GodPower=new ArrayList<String>();
+        private ArrayList<String> GodGender=new ArrayList<String>();
 
 
 
@@ -96,10 +97,12 @@ public class MainActivity extends AppCompatActivity {
                     String name = jsonObject.getString("name");
                     String location = jsonObject.getString("location");
                     String company = jsonObject.getString("company");
+                    String category = jsonObject.getString("category");
 
                     GodNames.add(name);
                     GodLocs.add(location);
                     GodPower.add(company);
+                    GodGender.add(category);
                 }
                 ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this, R.layout.list_textview, R.id.list_TEXTVIEW, GodNames);
                 ListView my_listview=(ListView) findViewById(R.id.list_LISTVIEW);
@@ -108,8 +111,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        intent.putExtra("names", GodNames.get(i));
                         intent.putExtra("power", GodPower.get(i));
                         intent.putExtra("location", GodLocs.get(i));
+                        intent.putExtra("gender", GodGender.get(i));
                         startActivity(intent);
                     }
                 });

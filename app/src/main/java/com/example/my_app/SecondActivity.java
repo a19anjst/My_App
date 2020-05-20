@@ -18,7 +18,10 @@ public class SecondActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             String location = extras.getString("location");
-            textView.setText(location);
+            String power = extras.getString("power");
+            String names = extras.getString("names");
+            String gender = extras.getString("gender");
+            textView.setText("The " + gender + " " + names + " lives in " + location + " and has the power of " + power);
         }
         Button close = findViewById(R.id.go_back);
         close.setOnClickListener(new View.OnClickListener() {
