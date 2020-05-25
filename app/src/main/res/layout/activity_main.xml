@@ -43,11 +43,22 @@
         android:layout_marginTop="60dp"
         android:layout_marginLeft="100dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/About"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20dp"
+        android:text="Welcome to Norse Mythology!"
+        android:layout_marginTop="120dp"/>
+
     <ListView
         android:id="@+id/list_LISTVIEW"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="170dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
